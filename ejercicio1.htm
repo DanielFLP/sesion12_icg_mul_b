@@ -1,12 +1,10 @@
 <canvas id='tablero'  width=500 height = 450></canvas>
 <script>
 	function sumaTras(v1, v2){
-	ctx.beginPath();
-	ctx.closePath();
-	ctx.stroke();
-	ctx.fill();
 	var s = [];
-	return s;
+	for (var i = 0; i < v1.length; i++){
+		s[i] = v1[i] + v2[i % 2 == 0 ? 0 : 1];}
+	return s; 
 }
 	function polygon(cd,colorBorde,colorRelleno,grosor){
 	ctx.beginPath();
@@ -15,6 +13,7 @@
 	ctx.lineWidth= grosor;
 	ctx.moveTo(cd[0],cd[1]);
 	for (var i = 2; i < cd.length; i+=2)
+		ctx.lineTo(cd[i],cd [i + 1])
 	ctx.closePath();
 	ctx.stroke();
 	ctx.fill();
@@ -31,5 +30,5 @@
 	var letra_e_trasladada = sumaTras(letra_e, vt);
 	
 	polygon(letra_e,'magenta', 'magenta');
-	polygon(letra_e_trasladada, 'magenta', 'magenta');
+	polygon(letra_e_trasladada, 'blue', 'green');
 </script>
